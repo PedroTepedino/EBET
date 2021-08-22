@@ -1,4 +1,53 @@
-# Getting Started with Create React App
+# Ebet
+
+A bet platform focused on ESports fans.
+
+## Instalation
+
+### Requirements
+
+* [**Node.js**](https://nodejs.org/en/) : The JavaScript runtime that you will use to run your frontend project.
+* [**Yarn**](https://classic.yarnpkg.com/en/docs/install/#windows-stable) : A package and project manager for Node.js applications.
+* [**Python**](https://www.python.org/) : A recent Python 3 interpreter to run the Flask backend on.
+
+### Installing
+
+Install the [**Node.js**](https://nodejs.org/en/), [**Yarn**](https://classic.yarnpkg.com/en/docs/install/#windows-stable) and  [**Python**](https://www.python.org/) on your computer putting them on the path if possible.
+
+Afterwards clone this repo to your computer.
+Open your cmd or command line on your repo.
+Run the following commands:
+
+```bash
+cd api
+python -m venv venv
+venv\Scripts\activate
+pip install flask python-dotenv
+```
+
+## Running
+
+Open two cmd or command line instances and run the following commands.
+
+```bash
+yarn start
+```
+
+After it finishes starting run on the other cmd
+
+```bash
+yarn start-api
+```
+
+Have fun!
+
+## Acknowledgements
+
+This guide was writen based on this blog post:
+[How To Create a React + Flask Project](https://blog.miguelgrinberg.com/post/how-to-create-a-react--flask-project)
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
