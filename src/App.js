@@ -4,10 +4,17 @@ import './App.css';
 
 function App() {
   const [currentTime, setCurrentTime] = useState(0);
+  const [currentTeste, setCurrentTeste] = useState("boga")
 
   useEffect(() =>{
     fetch('/time').then(res => res.json()).then(data => {
       setCurrentTime(data.time);
+    });
+  }, []);
+
+  useEffect(() =>{
+    fetch('/teste').then(res => res.json()).then(data => {
+      setCurrentTeste(data.teste);
     });
   }, []);
 
@@ -17,6 +24,9 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <p>
+          Faaaaalaaaa dev.
         </p>
         <a
           className="App-link"
@@ -29,6 +39,7 @@ function App() {
 
         <p>The current time is {currentTime}</p>
 
+        <p> Testeszero : {currentTeste} </p>
       </header>
     </div>
   );
