@@ -117,3 +117,45 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+==========================
+
+# About the games
+
+## Systems
+
+* Fazer apostas
+* Tirar apostas
+* Colocar/Tirar dinehiro de usuário
+* Começar/Terminar/Calcular partida **(DEV ONLY)**
+* Ver estatísticas dos usuários
+* Ver estatísticas dos times
+* Mudar apostas durante o jogo
+
+## Data
+
+* Registra um time
+  * id
+  * Esporte
+  * Odd
+  * Partidas passadas
+* Registrar um Esport
+  * id
+  * Quantidade de partidas (MDn)
+* Registrar Partida
+  * id
+  * Dia e hora de inicio
+  * Duração
+  * Time A
+  * Time B
+* Registrar Usuário
+  * id
+  * Login
+  * Senha
+  * Quantidade de Dinheiro (Carteira)
+  * partidas passadas e aposta
+  * idade
+* Histórico dos Resultados
+  * id
+  * Partida (id)
+  * Resultado
