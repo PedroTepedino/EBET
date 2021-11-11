@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Área de Cadastro - eBET</title>
+</head>
+<body>
+   <h1>Dados de Cadastro</h1>
+   <form action="/cadastro" method="post">
+      <table>
+           <tr>
+               <td>Nome Completo:</td>
+               <td><input type="text" name="nome" size="50" maxlength="50" required/></td>
+           </tr>
+           <tr>
+               <td>Data de Nascimento:</td>
+               <td><input type="date" name="data" required/></td>
+           </tr>
+           <tr>
+               <td>CPF:</td>
+               <td><input type="text" name="cpf" size="14" maxlength="14" required/></td>
+           </tr>
+
+           <tr>
+               <td>E-mail:</td>
+               <td><input type="text" name="email" size="50" maxlength="50" required/></td>
+           </tr>
+           <tr>
+               <td>Nome de Usuário:</td>
+               <td><input type="text" name="username" size="20" maxlength="20" required/></td>
+           </tr>
+           <tr>
+               <td>Senha:</td>
+               <td><input type="text" name="senha" size="20" maxlength="20" required/></td>
+           </tr>
+            <tr>
+               <td>Confirmar Senha:</td>
+               <td><input type="text" name="confsenha" size="20" maxlength="20" required/></td>
+           </tr>
+
+       </table>
+       <br/>
+       <input type="submit" value="Realizar Cadastro"/>
+       </form>
+       <hr/>
+       <br/>
+       [<a href="/"> Voltar ao Menu </a>]
+</body>
+</html>
