@@ -20,6 +20,10 @@ def cadastro2():
     msg = ''
 
     nome = request.form['nome']
+    if not nome.replace(' ', '').isalpha():
+        is_valid_request = False
+        msg += 'O nome deve conter apenas letras\n'
+
     data = request.form['data']
     cpf = request.form['cpf']
     email = request.form['email']
