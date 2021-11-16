@@ -38,6 +38,10 @@ def cadastro2():
         msg += "CPF Invalido\n"
 
     email = request.form['email']
+    if not validate_email(email):
+        is_valid_request = False
+        msg += "Email invalido\n"
+    
     username = request.form['username']
     
     senha = request.form['senha']
