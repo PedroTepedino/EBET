@@ -43,6 +43,9 @@ def cadastro2():
         msg += "Email invalido\n"
     
     username = request.form['username']
+    if not validate_usernarme(username):
+        is_valid_request = False
+        msg += "Username shoud only contain letters, numbers.\n"
     
     senha = request.form['senha']
     confsenha = request.form['confsenha']
@@ -66,9 +69,9 @@ def render_tests():
 
 @app.route('/test', methods=['POST'])
 def test():
-    cpf = request.form['cpf']
-    print(cpf)
-    print(validate_cpf(cpf))
+    username = request.form['username']
+    print(username)
+    print(validate_username(username))
     return render_template('test.html')
 
 
