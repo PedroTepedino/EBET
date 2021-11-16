@@ -36,7 +36,7 @@ def cadastro2():
         msg += "As senhas nao são iguais\n"
 
     if is_valid_request:
-        mysql = bd.SQL("root", "hiragi7", "ebet")
+        mysql = bd.SQL("ebet", "ebet", "ebetdb")
         comando = "INSERT INTO apostador(nmecomp_ap, datanasc_ap, cpf_ap, email_ap, username_ap, senha_ap, confsenha_ap) VALUES (%s, %s, %s, %s, %s, %s, %s);"
         if mysql.executar(comando, [nome, data, cpf, email, username, senha, confsenha]):
             msg = "Cadastro realizado com sucesso!"
