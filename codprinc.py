@@ -43,7 +43,7 @@ def cadastro2():
         msg += "Email invalido\n"
     
     username = request.form['username']
-    if not validate_usernarme(username):
+    if not validate_username(username):
         is_valid_request = False
         msg += "Username shoud only contain letters, numbers.\n"
     
@@ -56,7 +56,7 @@ def cadastro2():
     if is_valid_request:
         mysql = bd.SQL("ebet", "ebet", "ebetdb")
         comando = "INSERT INTO apostador(nmecomp_ap, datanasc_ap, cpf_ap, email_ap, username_ap, senha_ap, confsenha_ap) VALUES (%s, %s, %s, %s, %s, %s, %s);"
-        if mysql.executar(comando, [nome, data, cpf, email, username, senha, confsenha]):
+        if mysql.executar(comando, [nome, data, cpf, email, username, hash_password(senha), confsenha]):
             msg = "Cadastro realizado com sucesso!"
         else:
             msg = "Falha no cadastro. Tente novamente!"
@@ -69,9 +69,9 @@ def render_tests():
 
 @app.route('/test', methods=['POST'])
 def test():
-    username = request.form['username']
-    print(username)
-    print(validate_username(username))
+    password = request.form['senha']
+    print(password)
+    print(hash_password(password))
     return render_template('test.html')
 
 
