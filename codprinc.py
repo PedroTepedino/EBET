@@ -69,7 +69,7 @@ def render_tests():
 
 @app.route('/test', methods=['POST'])
 def test():
-    password = request.form['senha']
+    password = request.form['senha'].encode('utf-8')
     print(password)
     print(hash_password(password))
     return render_template('test.html')

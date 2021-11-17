@@ -17,8 +17,7 @@ def create_better(mysql):
             cpf_ap VARCHAR(14) NOT NULL,
             email_ap VARCHAR(256) NOT NULL,
             username_ap VARCHAR(256) NOT NULL,
-            senha_ap VARCHAR(256) NOT NULL,
-            confsenha_ap VARCHAR(256) NOT NULL);
+            senha_ap VARCHAR(256) NOT NULL);
             """
 
     if mysql.executar(comando, ()):
