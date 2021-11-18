@@ -35,13 +35,28 @@ def create_jogo(mysql):
     if mysql.executar(comando, ()):
         print ("Tabela JOGO criada com sucesso!")
 
-def
+def create_time(mysql):
+
+    comando = "DROP TABLE IF EXISTS time;"
+
+    if mysql.executar(comando, ()):
+        print("Tabela TIME excluída com sucesso!")
+
+    comando = """
+               CREATE TABLE time (idt_tm INT AUTO_INCREMENT PRIMARY KEY,
+               nme_tm VARCHAR(256) NOT NULL,
+               slg_tm VARCHAR(256) NOT NULL,
+               num_plys_tm INT NOT NULL);
+               """
+    if mysql.executar(comando, ()):
+        print("Tabela TIME criada com sucesso!")
             
 
 def main():
     mysql_connection = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
     create_better(mysql_connection)
     create_jogo(mysql_connection)
+    create_time(mysql_connection)
 
 if __name__ == "__main__":
     main()
