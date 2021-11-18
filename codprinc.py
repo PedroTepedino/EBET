@@ -54,9 +54,9 @@ def cadastro2():
         msg += "As senhas nao são iguais\n"
 
     if is_valid_request:
-        mysql = bd.SQL("ebet", "ebet", "ebetdb")
-        comando = "INSERT INTO apostador(nmecomp_ap, datanasc_ap, cpf_ap, email_ap, username_ap, senha_ap, confsenha_ap) VALUES (%s, %s, %s, %s, %s, %s, %s);"
-        if mysql.executar(comando, [nome, data, cpf, email, username, hash_password(senha), confsenha]):
+        mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
+        comando = "INSERT INTO apostador(nmecomp_ap, datanasc_ap, cpf_ap, email_ap, username_ap, senha_ap) VALUES (%s, %s, %s, %s, %s, %s);"
+        if mysql.executar(comando, [nome, data, cpf, email, username, hash_password(senha)]):
             msg = "Cadastro realizado com sucesso!"
         else:
             msg = "Falha no cadastro. Tente novamente!"
@@ -71,7 +71,7 @@ def render_tests():
 def test():
     password = request.form['senha'].encode('utf-8')
     print(password)
-    print(hash_password(password))
+    print(hash_password(password)).encode('utf-8')
     return render_template('test.html')
 
 

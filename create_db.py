@@ -26,7 +26,7 @@ def create_better(mysql):
 
 
 def main():
-    mysql_connection = bd.SQL("ebet", "ebet", "ebetdb")
+    mysql_connection = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
     create_better(mysql_connection)
 
 if __name__ == "__main__":
