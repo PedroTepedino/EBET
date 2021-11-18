@@ -1,9 +1,6 @@
 import bd
-import mysql.connector
-
 
 def create_better(mysql):
-    #mysql = bd.SQL("ebet", "ebet", "ebetdb")
 
     comando = "DROP TABLE IF EXISTS apostador;"
 
@@ -23,11 +20,13 @@ def create_better(mysql):
     if mysql.executar(comando, ()):
         print ("Tabela APOSTADOR criada com sucesso!")
 
-
+def create_partida(mysql):
+    pass
 
 def main():
     mysql_connection = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
     create_better(mysql_connection)
+    create_partida(mysql_connection)
 
 if __name__ == "__main__":
     main()
