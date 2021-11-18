@@ -20,13 +20,26 @@ def create_better(mysql):
     if mysql.executar(comando, ()):
         print ("Tabela APOSTADOR criada com sucesso!")
 
-def create_partida(mysql):
-    pass
+def create_jogo(mysql):
+
+    comando = "DROP TABLE IF EXISTS jogo;"
+
+    if mysql.executar(comando, ()):
+        print ("Tabela JOGO excluída com sucesso!")
+
+    comando = """
+            CREATE TABLE jogo (idt_pt INT AUTO_INCREMENT PRIMARY KEY,
+            nme_jg VARCHAR(256) NOT NULL,
+            desc_jg VARCHAR(256) NOT NULL);
+            """
+    if mysql.executar(comando, ()):
+        print ("Tabela JOGO criada com sucesso!")
+            
 
 def main():
     mysql_connection = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
     create_better(mysql_connection)
-    create_partida(mysql_connection)
+    create_jogo(mysql_connection)
 
 if __name__ == "__main__":
     main()
