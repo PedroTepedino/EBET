@@ -34,6 +34,8 @@ def create_jogo(mysql):
             """
     if mysql.executar(comando, ()):
         print ("Tabela JOGO criada com sucesso!")
+
+def
             
 
 def main():
