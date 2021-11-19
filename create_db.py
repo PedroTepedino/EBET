@@ -68,7 +68,7 @@ def create_partida(mysql):
                values_pt INT NOT NULL);
                """
     if mysql.executar(comando, ()):
-        print("Tabela JOGO criada com sucesso!")
+        print("Tabela PARTIDA criada com sucesso!")
             
 
 def main():
