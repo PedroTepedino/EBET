@@ -31,6 +31,7 @@ def create_jogo(mysql):
     comando = """
             CREATE TABLE jogo (idt_jg INT AUTO_INCREMENT PRIMARY KEY,
             nme_jg VARCHAR(256) NOT NULL,
+            modalidade_jg VARCHAR(256) NOT NULL,
             desc_jg VARCHAR(256) NOT NULL);
             """
     if mysql.executar(comando, ()):
