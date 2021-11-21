@@ -81,14 +81,32 @@ def adicionar():
 @app.route('/adicionado_jogo', methods=['POST'])
 def adicionar2():
     jogo = request.form['jogo']
-    modaidade = request.form['modalidade']
+    modalidade = request.form['modalidade']
     descricao = request.form['descricao']
 
-   mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
-   comando = "INSERT INTO jogo(nme_jg, modalidade_jg, desc_jg) VALUES (%s, %s, %s, );"
-   if mysql.executar(comando, [jogo, modalidade, descricao]):
+    mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
+    comando = "INSERT INTO jogo(nme_jg, modalidade_jg, desc_jg) VALUES (%s, %s, %s);"
+    if mysql.executar(comando, [jogo, modalidade, descricao]):
        msg="Jogo" + jogo + " adicionado com sucesso!"
-   else:
+    else:
        msg="Falha na inclusão de jogo."
+    return render_template('adicionar_jg.html')
 
-   return render_template('adicionado_jg.html', msg=msg)
+@app.route('/adicionar_time')
+def adicionar3():
+    return render_template('adicionar_tm.html')
+
+@app.route('/adicionado_time', methods=['POST'])
+def adicionar4():
+    time = request.form['time']
+    sigla = request.form['sigla']
+    num_players = request.form['num_players']
+
+    mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
+    comando = "INSERT INTO jogo(nme_tm, sgl_tm, num_plys_tm) VALUES (%s, %s, %s);"
+    if mysql.executar(comando, [time, sigla, num_players]):
+       msg="Jogo" + time + " adicionado com sucesso!"
+    else:
+       msg="Falha na inclusão de time."
+    return render_template('adicionar_tm.html')
+
