@@ -74,6 +74,21 @@ def test():
     print(hash_password(password)).encode('utf-8')
     return render_template('test.html')
 
+@app.route('/adicionar_jogo')
+def adicionar():
+    return render_template('adicionar_jg.html')
 
-app.debug = 1
-app.run()
+@app.route('/adicionado_jogo', methods=['POST'])
+def adicionar2():
+    jogo = request.form['jogo']
+    modaidade = request.form['modalidade']
+    descricao = request.form['descricao']
+
+   mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
+   comando = "INSERT INTO jogo(nme_jg, modalidade_jg, desc_jg) VALUES (%s, %s, %s, );"
+   if mysql.executar(comando, [jogo, modalidade, descricao]):
+       msg="Jogo" + jogo + " adicionado com sucesso!"
+   else:
+       msg="Falha na inclusão de jogo."
+
+   return render_template('adicionado_jg.html', msg=msg)
