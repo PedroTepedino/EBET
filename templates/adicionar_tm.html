@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+   <meta charset="UTF-8">
+   <title>Areá de adição de times</title>
+</head>
+<body>
+   <h1>Adicionar Time</h1>
+   <hr/>
+   <form action="/adicionado_tm" method="post">
+       <table>
+           <tr>
+               <td>Nome do time:</td>
+               <td><input type="text" name="time" size="50" maxlength="50" required/></td>
+           </tr>
+           <tr>
+               <td>Sigla do time:</td>
+               <td><input type="text" name="sigla" size="50" maxlength="50" required/></td>
+           </tr>
+           <tr>
+               <td>Numero de players:</td>
+               <td><input type="number" name="num_players" size="3" min="1" max="20" step="1" required/></td>
+           </tr>
+       </table>
+       <br/>
+       <input type="submit" value="Adicionar time"/>
+   </form>
+   <br/>
+   <hr/>
+   <br/>
+   <a href="/"> Voltar ao Menu </a>
+</body>
+</html>
