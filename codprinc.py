@@ -92,11 +92,11 @@ def adicionar2():
        msg="Falha na inclusão de jogo."
     return render_template('adicionar_jg.html')
 
-@app.route('/adicionar_tm')
+@app.route('/adicionar_time')
 def adicionar3():
     return render_template('adicionar_tm.html')
 
-@app.route('/adicionado_tm', methods=['POST'])
+@app.route('/adicionado_time', methods=['POST'])
 def adicionar4():
     time = request.form['time']
     sigla = request.form['sigla']
@@ -111,3 +111,5 @@ def adicionar4():
 
     return render_template('adicionado_tm.html')
 
+app.debug = 1
+app.run()
