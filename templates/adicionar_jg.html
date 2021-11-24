@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Área de adição de jogo - eBET</title>
+</head>
+<body>
+   <h1>Adicionar jogo</h1>
+   <hr/>
+   <form action="/adicionado_jg" method="post">
+      <table>
+           <tr>
+               <td>Nome do jogo:</td>
+               <td><input type="text" name="jogo" size="50" maxlength="50" required/></td>
+           </tr>
+          <tr>
+               <td>Modalidade de jogo:</td>
+               <td>
+                   <SELECT name="modalodade" required>
+                       <option>Ação</option>
+                       <option>Aventura</option>
+                       <option>Battle Royale</option>
+                       <option>Esportes</option>
+                       <option>FPS (First Person Shooter)</option>
+                       <option>MMO (Massively Multiplayer Online)</option>
+                       <option>MOBA (Multiplayer Online Battle Arena)</option>
+                       <option>Puzzle e Party Games</option>
+                       <option>RPG (Role-Playing Game)</option>
+                       <option>RTS (Real Time Strategy)</option>
+                       <option>Sandbox</option>
+                   </SELECT>
+               </td>
+           </tr>
+           <tr>
+               <td>Descrição do jogo:</td>
+               <td><input type="text" name="descricao" size="100" maxlength="100" required/></td>
+           </tr>
+       </table>
+       <br/>
+       <input type="submit" value="Adicionar jogo"/>
+       </form>
+       <hr/>
+       <br/>
+       [<a href="/"> Voltar ao Menu </a>]
+</body>
+</html>
