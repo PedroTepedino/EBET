@@ -46,9 +46,11 @@ def create_time(mysql):
 
     comando = """
                CREATE TABLE time (idt_tm INT AUTO_INCREMENT PRIMARY KEY,
+               idt_jogo AUTO_INCREMENT INT NOT NULL,
                nme_tm VARCHAR(256) NOT NULL,
                slg_tm VARCHAR(256) NOT NULL,
-               num_plys_tm INT NOT NULL);
+               num_plys_tm INT NOT NULL,
+               CONSTRAINT fk_jogo_time FOREIGN KEY(idt_jogo) REFERENCES jogo(idt_jg);
                """
     if mysql.executar(comando, ()):
         print("Tabela TIME criada com sucesso!")
@@ -65,10 +67,28 @@ def create_partida(mysql):
                odds_pt FLOAT NOT NULL,
                results_pt VARCHAR(256) NOT NULL,
                rounds_pt INT NOT NULL,
-               values_pt INT NOT NULL);
+               values_pt INT NOT NULL, 
+               CONSTRAINT fk_partida_time FOREIGN KEY(idt1_time) REFERENCES time(idt_tm),
+               CONSTRAINT fk_partida2_time FOREIGN KEY(idt2_time) REFERENCES time(idt_tm),
+               CONSTRAINT fk_partida_jogo FOREIGN KEY(idt_jogo) REFERENCES jogo(idt_jg));
                """
     if mysql.executar(comando, ()):
         print("Tabela PARTIDA criada com sucesso!")
+
+def create_carteira(mysql):
+
+    comando = "DROP TABLE IF EXISTS carteira;"
+
+    if mysql.executar(comando, ()):
+        print("Tabela CARTEIRA excluída com sucesso!")
+
+    comando = """
+                CREATE TABLE carteira (idt_ct INT AUTO_INCREMENT PRIMARY KEY,
+                fds_ct FLOAT NOT NULL,
+                CONSTRAINT fk_carteira_apostador FOREIGN KEY(idt_apostador) REFERENCES apostador(idt_ap));
+    """
+    if mysql.executar(comando, ()):
+        print("Tabela CARTEIRA criada com sucesso!")
             
 
 def main():
@@ -77,6 +97,7 @@ def main():
     create_jogo(mysql_connection)
     create_time(mysql_connection)
     create_partida(mysql_connection)
+    create_carteira(mysql_connection)
 
 if __name__ == "__main__":
     main()
