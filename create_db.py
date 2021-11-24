@@ -50,6 +50,7 @@ def create_time(mysql):
                nme_tm VARCHAR(256) NOT NULL,
                slg_tm VARCHAR(256) NOT NULL,
                num_plys_tm INT NOT NULL,
+               idt_jogo INT NOT NULL,
                CONSTRAINT fk_jogo_time FOREIGN KEY(idt_jogo) REFERENCES jogo(idt_jg);
                """
     if mysql.executar(comando, ()):
@@ -68,6 +69,9 @@ def create_partida(mysql):
                results_pt VARCHAR(256) NOT NULL,
                rounds_pt INT NOT NULL,
                values_pt INT NOT NULL, 
+               idt1_time INT NOT NULL,
+               idt2_time INT NOT NULL,
+               idt_jogo INT NOT NULL,
                CONSTRAINT fk_partida_time FOREIGN KEY(idt1_time) REFERENCES time(idt_tm),
                CONSTRAINT fk_partida2_time FOREIGN KEY(idt2_time) REFERENCES time(idt_tm),
                CONSTRAINT fk_partida_jogo FOREIGN KEY(idt_jogo) REFERENCES jogo(idt_jg));
@@ -85,6 +89,7 @@ def create_carteira(mysql):
     comando = """
                 CREATE TABLE carteira (idt_ct INT AUTO_INCREMENT PRIMARY KEY,
                 fds_ct FLOAT NOT NULL,
+                idt_apostador INT NOT NULL,
                 CONSTRAINT fk_carteira_apostador FOREIGN KEY(idt_apostador) REFERENCES apostador(idt_ap));
     """
     if mysql.executar(comando, ()):
