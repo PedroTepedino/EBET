@@ -65,10 +65,12 @@ def create_partida(mysql):
 
     comando = """
                CREATE TABLE partida (idt_pt INT AUTO_INCREMENT PRIMARY KEY,
-               odds_pt FLOAT NOT NULL,
+               odds_a_pt FLOAT NOT NULL,
+               odds_b_pt FLOAT NOT NULL,
                results_pt VARCHAR(256) NOT NULL,
                rounds_pt INT NOT NULL,
-               values_pt INT NOT NULL, 
+               values_a_pt INT NOT NULL, 
+               values_a_pt INT NOT NULL,
                idt1_time INT NOT NULL,
                idt2_time INT NOT NULL,
                idt_jogo INT NOT NULL,
