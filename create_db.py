@@ -70,7 +70,7 @@ def create_partida(mysql):
                results_pt VARCHAR(256) NOT NULL,
                rounds_pt INT NOT NULL,
                values_a_pt INT NOT NULL, 
-               values_a_pt INT NOT NULL,
+               values_b_pt INT NOT NULL,
                idt1_time INT NOT NULL,
                idt2_time INT NOT NULL,
                idt_jogo INT NOT NULL,
