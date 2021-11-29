@@ -72,6 +72,10 @@ def cadastro2():
 
     return render_template('cadastro.html', msg=msg)
 
+@app.route('/menu')
+def menu():
+    return render_template('menu.html')
+
 @app.route('/go-to-tests')
 def render_tests():
     return render_template('test.html')
