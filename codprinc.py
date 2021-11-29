@@ -42,7 +42,7 @@ def cadastro2():
     comando = "SELECT idt_ap FROM apostador WHERE cpf_ap = %s"
     cursor = mysql.consultar(comando, [cpf])
     result = cursor.fetchone()
-    if len(result) > 0:
+    if result is not None:
         is_valid_request = False
         msg += "CPF ja existe\n"
 
