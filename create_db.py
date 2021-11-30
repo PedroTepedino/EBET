@@ -51,7 +51,7 @@ def create_time(mysql):
                slg_tm VARCHAR(256) NOT NULL,
                num_plys_tm INT NOT NULL,
                idt_jogo INT NOT NULL,
-               CONSTRAINT fk_jogo_time FOREIGN KEY(idt_jogo) REFERENCES jogo(idt_jg);
+               CONSTRAINT fk_jogo_time FOREIGN KEY(idt_jogo) REFERENCES jogo(idt_jg));
                """
     if mysql.executar(comando, ()):
         print("Tabela TIME criada com sucesso!")
