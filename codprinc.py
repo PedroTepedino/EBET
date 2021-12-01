@@ -19,7 +19,7 @@ def cadastro():
 
 @app.route('/cadastro', methods=['POST'])
 def cadastro2():
-    mysql = bd.SQL("root", "hiragi7", "ebet")
+    mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
 
     is_valid_request = True #admits valid input
     msg = ''
@@ -64,8 +64,8 @@ def cadastro2():
         msg += "As senhas nao são iguais\n"
 
     if is_valid_request:
-        comando = "INSERT INTO apostador(nmecomp_ap, datanasc_ap, cpf_ap, email_ap, username_ap, senha_ap) VALUES (%s, %s, %s, %s, %s, %s);"
-        if mysql.executar(comando, [nome, data, cpf, email, username, hash_password(senha)]):
+        comando = "INSERT INTO apostador(nmecomp_ap, datanasc_ap, cpf_ap, email_ap, username_ap, senha_ap) VALUES (%s, %s, %s, %s, %s, SHA(%s));"
+        if mysql.executar(comando, [nome, data, cpf, email, username, senha]):
             msg = "Cadastro realizado com sucesso!"
         else:
             msg = "Falha no cadastro. Tente novamente!"
@@ -76,9 +76,9 @@ def cadastro2():
 def menu():
     username = request.form['username']
     senha = request.form['senha']
-    mysql = bd.SQL("root", "hiragi7", "ebet")
-    cmd = 'SELECT count(username_ap) AS qtd FROM apostador WHERE username_ap=%s;'
-    qtd = mysql.consultar(cmd, [username]).fetchone()
+    mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
+    cmd = 'SELECT count(username_ap) AS qtd FROM apostador WHERE username_ap=%s AND senha_ap=SHA(%s);'
+    qtd = mysql.consultar(cmd, [username, senha]).fetchone()
     if qtd[0] == 1:
         return render_template('menu.html')
     elif qtd[0] == 0:
@@ -105,7 +105,7 @@ def adicionar2():
     modalidade = request.form['modalidade']
     descricao = request.form['descricao']
 
-    mysql = bd.SQL("root", "hiragi7", "ebet")
+    mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
     comando = "INSERT INTO jogo(nme_jg, modalidade_jg, desc_jg) VALUES (%s, %s, %s);"
     if mysql.executar(comando, [jogo, modalidade, descricao]):
        msg= jogo + " adicionado com sucesso!"
@@ -123,7 +123,7 @@ def adicionar4():
     sigla = request.form['sigla']
     num_players = float(request.form['num_players'])
 
-    mysql = bd.SQL("root", "hiragi7", "ebet")
+    mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
     comando = "INSERT INTO time(nme_tm, sgl_tm, num_plys_tm) VALUES (%s, %s, %s);"
     if mysql.executar(comando, [time, sigla, num_players]):
        msg =  time + " adicionado com sucesso!"
@@ -148,7 +148,7 @@ def adicionar6():
     idt2_time = request.form['idt2_time']
     idt_jogo = request.form['idt_jogo']
 
-    mysql = bd.SQL("root", "hiragi7", "ebet")
+    mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
 
     comando = "INSERT INTO partida(odds_a_pt, odds_b_pt, results_pt, rounds_pt, values_a_pt, values_b_pt, idt1_time, idt2_time, idt_jogo) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);"
     if mysql.executar(comando, [odds_a, odds_b, results, rounds, values_a, values_b, idt1_time, idt2_time, idt_jogo]):
