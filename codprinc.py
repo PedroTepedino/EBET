@@ -120,7 +120,7 @@ def adicionar2():
     mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
     comando = "INSERT INTO jogo(nme_jg, modalidade_jg, desc_jg) VALUES (%s, %s, %s);"
     if mysql.executar(comando, [jogo, modalidade, descricao]):
-       msg="Jogo" + jogo + " adicionado com sucesso!"
+       msg= jogo + " adicionado com sucesso!"
     else:
        msg="Falha na inclusão de jogo."
     return render_template('adicionado_jg.html', msg=msg)
@@ -138,7 +138,7 @@ def adicionar4():
     mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
     comando = "INSERT INTO time(nme_tm, sgl_tm, num_plys_tm) VALUES (%s, %s, %s);"
     if mysql.executar(comando, [time, sigla, num_players]):
-       msg = "Time" + time + " adicionado com sucesso!"
+       msg =  time + " adicionado com sucesso!"
     else:
        msg = "Falha na inclusão de time."
 
