@@ -72,9 +72,29 @@ def cadastro2():
 
     return render_template('cadastro.html', msg=msg)
 
-@app.route('/menu')
+@app.route('/menu', methods=['POST'])
 def menu():
-    return render_template('menu.html')
+    msg = ""
+    mostrar = "none"
+    username = request.form['username']
+    senha = request.form['senha']
+    mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
+    cmd = 'SELECT COUNT(idt_ap) AS qtd FROM apostador WHERE username_ap=%s;'
+    qtd = mysql.consultar(cmd, [username]).fetchone()
+    if qtd[0] == 0:
+        msg = "Usuário inexistente"
+        mostrar = "block"
+    else:
+        cmd = 'SELECT COUNT(idt_ap) AS qtd FROM apostador WHERE username_ap=%s AND senha_ap=SHA(%s);'
+        qtd = mysql.consultar(cmd, [username, senha]).fetchone()
+        if qtd[0] == 0:
+            msg = "Senha está errada"
+            mostrar = "block"
+        else:
+            cmd = 'SELECT COUNT(idt_ap) AS qtd FROM apostador WHERE username_ap=%s AND senha_ap=SHA(%s);'
+            qtd = mysql.consultar(cmd, [username, senha]).fetchone()
+            if qtd[0] != 0:
+                return render_template('menu.html', msg=msg)
 
 @app.route('/go-to-tests')
 def render_tests():
@@ -116,7 +136,7 @@ def adicionar4():
     num_players = float(request.form['num_players'])
 
     mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
-    comando = "INSERT INTO jogo(nme_tm, sgl_tm, num_plys_tm) VALUES (%s, %s, %s);"
+    comando = "INSERT INTO time(nme_tm, sgl_tm, num_plys_tm) VALUES (%s, %s, %s);"
     if mysql.executar(comando, [time, sigla, num_players]):
        msg = "Time" + time + " adicionado com sucesso!"
     else:
