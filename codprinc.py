@@ -78,7 +78,7 @@ def menu():
     senha = request.form['senha']
     mysql = bd.SQL("root", "hiragi7", "ebet")
     cmd = 'SELECT count(username_ap) AS qtd FROM apostador WHERE username_ap=%s;'
-    qtd = mysql.consultar(cmd, [username, senha]).fetchone()
+    qtd = mysql.consultar(cmd, [username]).fetchone()
     if qtd[0] == 1:
         return render_template('menu.html')
     elif qtd[0] == 0:
