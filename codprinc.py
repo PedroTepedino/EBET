@@ -158,6 +158,17 @@ def adicionar6():
 
     return render_template('adicionar_pt.html', msg=msg)
 
+@app.route('/apostas')
+def apostas():
+    return render_template('apostas.html')
+
+@app.route('/carteira')
+def carteira():
+    return render_template('carteira.html')
+
+@app.route('/conta')
+def conta():
+    return render_template('conta.html')
 
 app.debug = 1
 app.run()
