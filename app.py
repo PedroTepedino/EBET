@@ -81,8 +81,8 @@ def cadastro2():
         msg += "As senhas nao são iguais\n"
 
     if is_valid_request:
-        comando = "INSERT INTO apostador(nmecomp_ap, datanasc_ap, cpf_ap, email_ap, username_ap, senha_ap) VALUES (%s, %s, %s, %s, %s, SHA(%s));"
-        if mysql.executar(comando, [nome, data, cpf, email, username, senha]):
+        comando = "INSERT INTO apostador(nmecomp_ap, datanasc_ap, cpf_ap, email_ap, username_ap, senha_ap) VALUES (%s, %s, %s, %s, %s, %s);"
+        if mysql.executar(comando, [nome, data, cpf, email, username, hash_password(senha)]):
             msg = "Cadastro realizado com sucesso!"
         else:
             msg = "Falha no cadastro. Tente novamente!"
@@ -168,7 +168,7 @@ def adicionar4():
     num_players = float(request.form['num_players'])
 
     mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
-    comando = "INSERT INTO time(nme_tm, sgl_tm, num_plys_tm) VALUES (%s, %s, %s);"
+    comando = "INSERT INTO time(nme_tm, slg_tm, num_plys_tm) VALUES (%s, %s, %s);"
     if mysql.executar(comando, [time, sigla, num_players]):
         msg = time + " adicionado com sucesso!"
     else:
@@ -198,13 +198,13 @@ def adicionar6():
     values_b = request.form['values_b']
     idt1_time = request.form['idt1_time']
     idt2_time = request.form['idt2_time']
-    idt_jogo = request.form['idt_jogo']
+    idt_jogo2 = request.form['idt_jogo2']
 
     mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
 
-    comando = "INSERT INTO partida(odds_a_pt, odds_b_pt, results_pt, rounds_pt, values_a_pt, values_b_pt, idt1_time, idt2_time, idt_jogo) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);"
-    if mysql.executar(comando, [odds_a, odds_b, results, rounds, values_a, values_b, idt1_time, idt2_time, idt_jogo]):
-        msg = "Partida adicionada com sucesso!"
+    comando = "INSERT INTO partida(odds_a_pt, odds_b_pt, results_pt, rounds_pt, values_a_pt, values_b_pt, idt1_time, idt2_time, idt_jogo2) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);"
+    if mysql.executar(comando, [odds_a, odds_b, results, rounds, values_a, values_b, idt1_time, idt2_time, idt_jogo2]):
+       msg="Partida adicionada com sucesso!"
     else:
         msg = "Falha na inclusão de partida."
 
