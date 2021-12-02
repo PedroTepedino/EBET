@@ -6,11 +6,19 @@
 </head>
 <body>
  <h1>eBet</h1>
+ <h1>
+     Conta de {{ session['username'] }}
+ </h1>
    <hr/>
    <ul>
        <li><a href="/apostas">Apostar</a></li>
        <li><a href="/carteira">Carteira Digital</a></li>
        <li><a href="/conta">Conta</a></li>
+       <li>
+           <form action="/logout">
+               <input type="submit" value="Logout">
+           </form>
+       </li>
    </ul>
 </body>
 </html>

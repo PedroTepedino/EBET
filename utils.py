@@ -22,4 +22,3 @@ if __name__ == "__main__":
     print(normalize_cpf("12345678910"))
     comando = "SELECT idt_ap FROM apostador WHERE cpf_ap = %s"
     print(mysql.consultar(comando, ["12346578910"]).fetchone())
-    print(hash_password("151515"))
