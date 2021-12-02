@@ -95,6 +95,26 @@ def create_carteira(mysql):
     """
     if mysql.executar(comando, ()):
         print("Tabela CARTEIRA criada com sucesso!")
+
+def create_aposta(mysql):
+
+    comando = "DROP TABLE IF EXISTS aposta;"
+
+    if mysql.executar(comando, ()):
+            print("Tabela APOSTA excluída com sucesso!")
+
+    comando = """
+                CREATE TABLE aposta(idt_a INT AUTO_INCREMENT PRIMARY KEY,
+                idt_partida INT,
+                idt_apostador INT,
+                escolha_aposta INT NOT NULL,
+                CONSTRAINT fk_aposta_apostador FOREIGN KEY(idt_apostador) REFERENCES apostador(idt_ap),
+                CONSTRAINT fk_aposta_partida FOREIGN KEY(idt_partida) REFERENCES partida(idt_pt));
+    """
+    if mysql.executar(comando, ()):
+        print("Tabela APOSTA criada com sucesso!")
+
+
             
 
 def main():
