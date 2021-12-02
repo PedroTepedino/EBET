@@ -123,8 +123,8 @@ def adicionar4():
     sigla = request.form['sigla']
     num_players = float(request.form['num_players'])
 
-    mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
-    comando = "INSERT INTO time(nme_tm, slg_tm, num_plys_tm) VALUES (%s, %s, %s);"
+    mysql = bd.SQL("root", "hiragi7", "ebet")
+    comando = "INSERT INTO time(nme_tm, sgl_tm, num_plys_tm) VALUES (%s, %s, %s);"
     if mysql.executar(comando, [time, sigla, num_players]):
        msg =  time + " adicionado com sucesso!"
     else:

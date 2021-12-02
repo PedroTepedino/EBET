@@ -11,9 +11,6 @@ def calculate_age(birth_date_string):
     today = date.today()
     return today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
 
-def hash_password(password):
-    return md5(password.encode('utf-8')).hexdigest()
-
 def normalize_cpf(cpf_string):
     cpf_string = cpf_string.replace('.', '').replace('-', '')
     separated_cpf = re.findall('...?', cpf_string)
@@ -25,3 +22,4 @@ if __name__ == "__main__":
     print(normalize_cpf("12345678910"))
     comando = "SELECT idt_ap FROM apostador WHERE cpf_ap = %s"
     print(mysql.consultar(comando, ["12346578910"]).fetchone())
+    print(hash_password("151515"))

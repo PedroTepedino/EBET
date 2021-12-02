@@ -98,7 +98,7 @@ def create_carteira(mysql):
             
 
 def main():
-    mysql_connection = bd.SQL("root", "hiragi7", "ebet")
+    mysql_connection = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
     create_better(mysql_connection)
     create_jogo(mysql_connection)
     create_time(mysql_connection)
