@@ -102,7 +102,7 @@ def menu():
     cmd = 'SELECT idt_ap AS id FROM apostador WHERE username_ap=%s AND senha_ap=SHA(%s);'
 
     id = mysql.consultar(cmd, [username, senha]).fetchone()
-    if id[0] != 0:
+    if id and id[0] > 0:
         session['user_id'] = id[0]
         session['username'] = username
         return render_template('menu.html')
