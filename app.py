@@ -81,8 +81,8 @@ def cadastro2():
         msg += "As senhas nao são iguais\n"
 
     if is_valid_request:
-        comando = "INSERT INTO apostador(nmecomp_ap, datanasc_ap, cpf_ap, email_ap, username_ap, senha_ap) VALUES (%s, %s, %s, %s, %s, %s);"
-        if mysql.executar(comando, [nome, data, cpf, email, username, hash_password(senha)]):
+        comando = "INSERT INTO apostador(nmecomp_ap, datanasc_ap, cpf_ap, email_ap, username_ap, SHA(senha_ap)) VALUES (%s, %s, %s, %s, %s, %s);"
+        if mysql.executar(comando, [nome, data, cpf, email, username, senha]):
             msg = "Cadastro realizado com sucesso!"
         else:
             msg = "Falha no cadastro. Tente novamente!"
