@@ -60,16 +60,12 @@ def create_partida(mysql):
     comando = "DROP TABLE IF EXISTS partida;"
 
     if mysql.executar(comando, ()):
-        print("Tabela PARTIDA excluída com sucesso!")
+        print("Tabela PARTIDAS excluída com sucesso!")
 
     comando = """
-               CREATE TABLE partida (idt_pt INT AUTO_INCREMENT PRIMARY KEY,
+               CREATE TABLE partidas (idt_pt INT AUTO_INCREMENT PRIMARY KEY,
                odds_a_pt FLOAT NOT NULL,
                odds_b_pt FLOAT NOT NULL,
-               results_pt VARCHAR(256) NOT NULL,
-               rounds_pt INT NOT NULL,
-               values_a_pt INT NOT NULL, 
-               values_b_pt INT NOT NULL,
                idt1_time INT,
                idt2_time INT,
                idt_jogo2 INT,
@@ -78,7 +74,7 @@ def create_partida(mysql):
                CONSTRAINT fk_partida_jogo FOREIGN KEY(idt_jogo2) REFERENCES jogo(idt_jg));
                """
     if mysql.executar(comando, ()):
-        print("Tabela PARTIDA criada com sucesso!")
+        print("Tabela PARTIDAS criada com sucesso!")
 
 def create_carteira(mysql):
 

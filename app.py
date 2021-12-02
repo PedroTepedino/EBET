@@ -196,18 +196,14 @@ def adicionar6():
 
     odds_a = request.form['odds_a']
     odds_b = request.form['odds_b']
-    results = request.form['results']
-    rounds = request.form['rounds']
-    values_a = request.form['values_a']
-    values_b = request.form['values_b']
     idt1_time = request.form['idt1_time']
     idt2_time = request.form['idt2_time']
     idt_jogo2 = request.form['idt_jogo2']
 
     mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
 
-    comando = "INSERT INTO partida(odds_a_pt, odds_b_pt, results_pt, rounds_pt, values_a_pt, values_b_pt, idt1_time, idt2_time, idt_jogo2) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);"
-    if mysql.executar(comando, [odds_a, odds_b, results, rounds, values_a, values_b, idt1_time, idt2_time, idt_jogo2]):
+    comando = "INSERT INTO partida(odds_a_pt, odds_b_pt, idt1_time, idt2_time, idt_jogo2) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);"
+    if mysql.executar(comando, [odds_a, odds_b, idt1_time, idt2_time, idt_jogo2]):
        msg="Partida adicionada com sucesso!"
     else:
         msg = "Falha na inclusão de partida."
@@ -226,7 +222,7 @@ def apostas():
         msg = 'ERRO!! Adicione Fundos para realizar sua Aposta!'
     else:
         msg = 'Aposta realizada com sucesso!!'
-        quantia == '0'
+        session['quantia'] = quantia
 
     return render_template('apostas.html', msg=msg, quantia=quantia)
 
@@ -252,6 +248,7 @@ def fundos_adc():
      session['quantia'] = request.form['quantia']
      pag = request.form['pag']
      quantia = request.form['quantia']
+
      mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
 
      comando = "INSERT INTO carteira(fds_ct, mt_pag_ct) VALUES (%s, %s);"
