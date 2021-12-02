@@ -7,7 +7,88 @@
 <body>
  <h1>
      Conta de {{ session['username'] }}
+     <hr>
+     Fundos Atuais:{{ session['quantia'] }} Reais
+     <hr>
  </h1>
+ <form action="/apostado" method="post">
+<table>
+    <h4>League of Legends</h4>
+    <tr>
+        Flamengo
+        <button type="button" value="submit"autofocus onclick="alert('{{msg}}')">Apostar!</button>
+        <br>
+        VS
+        <br>
+        PAIN
+        <button type="button" value="submit" autofocus onclick="alert('{{msg}}')">Apostar!</button>
+    </tr>
+    <hr>
+       <tr>
+        Fúria
+        <button type="button" value="submit"autofocus onclick="alert('{{msg}}')">Apostar!</button>
+        <br>
+        VS
+        <br>
+        Red Canids
+        <button type="button" autofocus onclick="alert('{{msg}}')">Apostar!</button>
+    </tr>
+    <hr>
+    <tr>
+        LOUD
+        <button type="button" value="submit"autofocus onclick="alert('{{msg}}')">Apostar!</button>
+        <br>
+        VS
+        <br>
+        RENSGA
+        <button type="button" autofocus onclick="alert('{{msg}}')">Apostar!</button>
+    </tr>
+    <hr>
+       <tr>
+        Vorax Liberty
+        <button type="button" value="submit"autofocus onclick="alert('{{msg}}')">Apostar!</button>
+        <br>
+        VS
+        <br>
+        INTZ
+        <button type="button" autofocus onclick="alert('{{msg}}')">Apostar!</button>
+    </tr>
+    <hr>
+    <h5>CSGO</h5>
+       <tr>
+        Natus Vincere
+        <button type="button" value="submit"autofocus onclick="alert('{{msg}}')">Apostar!</button>
+        <br>
+        VS
+        <br>
+        GAMBIT
+        <button type="button" autofocus onclick="alert('{{msg}}')">Apostar!</button>
+    </tr>
+    <hr>
+       <tr>
+        Team Spirit
+        <button type="button" value="submit"autofocus onclick="alert('{{msg}}')">Apostar!</button>
+        <br>
+        VS
+        <br>
+        Renegades
+        <button type="button" autofocus onclick="alert('{{msg}}')">Apostar!</button>
+    </tr>
+    <hr>
+       <tr>
+        Entropiq
+        <button type="button" value="submit"autofocus onclick="alert('{{msg}}')">Apostar!</button>
+        <br>
+        VS
+        <br>
+        Virtus Pro
+        <button type="button" autofocus onclick="alert('{{msg}}')">Apostar!</button>
+    </tr>
+    <hr>
+
+
+
+</table>
 
 </body>
 </html>

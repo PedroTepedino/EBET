@@ -9,15 +9,12 @@
  <h1>
      Conta de {{ session['username'] }}
  </h1>
-    <table>
-        {{ get_partidas( ) }}
-    </table>
+
 
    <hr/>
    <ul>
        <li><a href="/apostas">Apostar</a></li>
        <li><a href="/carteira">Carteira Digital</a></li>
-       <li><a href="/conta">Conta</a></li>
        <li>
            <form action="/logout">
                <input type="submit" value="Logout">

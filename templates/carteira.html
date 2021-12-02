@@ -4,8 +4,32 @@
     <meta charset="UTF-8">
     <title>Carteira Digital | eBet</title>
 </head>
-  Carteira de {usuario}
+ <h1>Carteira Digital</h1>
+<h2>Carteira de {{ session['username'] }}</h2>
+<h3>Fundos Atuais:{{ session['quantia'] }}</h3>
 <body>
+   <form action="/fundos_adicionados" method="post">
+      <table>
+           <tr>
+               <td>Quantia a ser Adicionada:</td>
+               <td><input type="int" name="quantia" size="50" maxlength="50" required/></td>
+           </tr>
+           <tr>
+               <td>Forma de Pagamento:</td>
+               <td><input type="radio" id="C" name="pag" value="C">
+                <label for="C">Crédito</label>
+                <input type="radio" id="D" name="pag" value="D">
+                <label for="D">Débito</label>
+           </td>
+           </tr>
+
+       </table>
+       <br/>
+       <button type="submit" class="btn btn-outline-primary">Realizar Transação</button>
+       </form>
+       <hr/>
+       <br/>
+       [<a href="/"> Voltar ao Menu </a>]
 
 </body>
 </html>

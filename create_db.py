@@ -90,8 +90,9 @@ def create_carteira(mysql):
     comando = """
                 CREATE TABLE carteira (idt_ct INT AUTO_INCREMENT PRIMARY KEY,
                 fds_ct FLOAT NOT NULL,
+                mt_pag_ct CHAR(1) NOT NULL,
                 idt_apostador INT,
-                CONSTRAINT fk_carteira_apostador FOREIGN KEY(idt_apostador) REFERENCES apostador(idt_ap));
+                CONSTRAINT fk_carteiraapostador FOREIGN KEY(idt_apostador) REFERENCES apostador(idt_ap));
     """
     if mysql.executar(comando, ()):
         print("Tabela CARTEIRA criada com sucesso!")

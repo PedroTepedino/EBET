@@ -97,6 +97,7 @@ def menu():
 
     username = request.form['username']
     senha = request.form['senha']
+    quantia ='0'
 
     mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
     cmd = 'SELECT idt_ap AS id FROM apostador WHERE username_ap=%s AND senha_ap=SHA(%s);'
@@ -105,9 +106,12 @@ def menu():
     if id and id[0] > 0:
         session['user_id'] = id[0]
         session['username'] = username
+        session ['quantia'] = quantia
         return render_template('menu.html')
     else:
         return render_template('err.html')
+
+
 
 @app.route('/logout')
 def logout():
@@ -216,15 +220,24 @@ def apostas():
     if not session.get('user_id'):
         return redirect(url_for('login'))
 
-    return render_template('apostas.html')
+    quantia = session['quantia']
+
+    if quantia == '0':
+        msg = 'ERRO!! Adicione Fundos para realizar sua Aposta!'
+    else:
+        msg = 'Aposta realizada com sucesso!!'
+        quantia == '0'
+
+    return render_template('apostas.html', msg=msg, quantia=quantia)
 
 
 @app.route('/carteira')
 def carteira():
+    quantia = ''
     if not session.get('user_id'):
         return redirect(url_for('login'))
 
-    return render_template('carteira.html')
+    return render_template('carteira.html', quantia=quantia)
 
 
 @app.route('/conta')
@@ -234,12 +247,26 @@ def conta():
 
     return render_template('conta.html')
 
+@app.route('/fundos_adicionados', methods=['POST'])
+def fundos_adc():
+     session['quantia'] = request.form['quantia']
+     pag = request.form['pag']
+     quantia = request.form['quantia']
+     mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
+
+     comando = "INSERT INTO carteira(fds_ct, mt_pag_ct) VALUES (%s, %s);"
+     if mysql.executar(comando,[quantia, pag]):
+         msg = "Fundos adicionados com sucesso!"
+     else:
+         msg = "Falha na adição de fundos."
+
+     return render_template('fundos_adicionados.html', msg=msg, quantia=quantia)
+
 def get_partidas():
     mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
     comando = "SELECT * FROM partidas;"
     partidas = mysql.executar(comando, []).fetchall()
 
-    aux = ""
     for partida in partidas:
         aux += f'<tr><th>{partida[0]} : {partida[1]}</th><th>{partida[2]}</th><th>{partida[3]} : {partida[4]}</th></tr>'
 
