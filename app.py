@@ -234,6 +234,15 @@ def conta():
 
     return render_template('conta.html')
 
+def get_partidas():
+    mysql = bd.SQL("ENhmDU84Vz", "kdEBNUvuo4", "ENhmDU84Vz", "remotemysql.com", "3306")
+    comando = "SELECT * FROM partidas;"
+    partidas = mysql.executar(comando, []).fetchall()
+
+    aux = ""
+    for partida in partidas:
+        aux += f'<tr><th>{partida[0]} : {partida[1]}</th><th>{partida[2]}</th><th>{partida[3]} : {partida[4]}</th></tr>'
+
 
 app.debug = 1
 app.run()
